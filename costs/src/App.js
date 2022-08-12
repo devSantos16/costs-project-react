@@ -5,7 +5,6 @@ import "./components/css/style.css"
 function App() {
   return (
     <div className="App">
-      <NavBar/>
       <Router/>
     </div>
   );
