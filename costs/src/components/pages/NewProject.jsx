@@ -1,16 +1,37 @@
 import { Link } from 'react-router-dom'
 
-const NewProject = ({ set, get, setArray }) => {
+const NewProject = ({ set, get, setArray, categorys }) => {
 
-    const showProject = (e) => {
-        e.preventDefault();
-        set.setProject(e.target.value);
+
+    const eventHandle = (set, event) => {
+        event.preventDefault();
+        set(event.target.value);
+        console.log(event.target.value);
+    }
+
+    const showCategorys = (category, index) => {
+        return (
+            <option key={index} value={category}>{category}</option>
+        )
     }
 
     const submitProject = () => {
+        console.log(get.category)
+
         // I need to study this
-        setArray(prevArray => [...prevArray, get.project])
-        console.log(setArray)
+        setArray(prevArray => [...prevArray,
+        {
+            title: get.nameProject,
+            budget: get.budget,
+            category: get.category,
+            services: []
+        }
+        ]);
+
+        set.setNameProject("");
+        set.setBudget(0);
+        set.setCategory("");
+
     }
 
     return (
@@ -19,11 +40,14 @@ const NewProject = ({ set, get, setArray }) => {
             <p>Crie seus projetos para depois adicionar os serviços</p>
             <form>
                 <p>Nome do Projeto</p>
-                <input type='text' onChange={(e) => showProject(e)}></input>
+                <input type='text' onChange={(e) => eventHandle(set.setNameProject, e)}></input>
                 <p>Orçamento</p>
-                <input type='text'></input>
+                <input type='text' onChange={(e) => eventHandle(set.setBudget, e)} ></input>
+                {/* nao sei ainda */}
                 <p>Categoria</p>
-                <input type='text'></input>
+                <select onChange={(e) => eventHandle(set.setCategory, e)}>
+                    {categorys.map((category, index) => showCategorys(category, index))}
+                </select>
             </form>
             <div className="buttonContainer">
                 <button><Link onClick={() => submitProject()} to="/projects">Criar projeto</Link></button>

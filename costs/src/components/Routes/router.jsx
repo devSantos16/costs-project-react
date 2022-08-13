@@ -6,34 +6,33 @@ import Projects from '../pages/Projects';
 import NavBar from '../patterns/Navbar';
 
 const Router = () => {
-    const [project, setProject] = useState();
+    const categorys = ['Planejamento', 'Segurança', 'Desenvolvimento', 'Design'];
+    const [nameProject, setNameProject] = useState();
     const [budget, setBudget] = useState();
-    const [category, setCategory] = useState();
-
+    const [category, setCategory] = useState(categorys[0]);
     const [array, setArray] = useState([]);
+    
 
     const set = {
-        setProject,
+        setNameProject,
         setBudget,
         setCategory,
     }
 
 
     const get = {
-        project,
+        nameProject,
         budget,
         category,
     }
-
-    
 
     return (
         <BrowserRouter>
             <NavBar />
             <Routes>
                 <Route exath path='/' element={<Home />} />
-                <Route path='/newproject' element={<NewProject setArray = {setArray} set = {set} get={get} />} />
-                <Route path='/projects' element={<Projects setArray = {setArray} array = {array} get = {get} />} />
+                <Route path='/newproject' element={<NewProject setArray = {setArray} set = {set} get={get} categorys = {categorys} />} />
+                <Route path='/projects' element={<Projects setArray = {setArray}array = {array} get = {get} />} />
             </Routes>
         </BrowserRouter>
     )
