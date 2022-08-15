@@ -5,7 +5,10 @@ const Home = () => {
             <div className="elementContainer">
                 <h1> Seja bem vindo a Costs </h1>
                 <p>Comece a gerenciar os seus projetos</p>
-                <button><Link to = "/newproject">Criar projeto</Link></button>
+                <div className='buttonHomeContainer'>
+                    <Link className='button' to="/newproject">Criar projeto</Link>
+                </div>
+
             </div>
         </section>
     )

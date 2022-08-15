@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 
-const Projects = ({ array, setArray }) => {
+const Projects = ({ get, set }) => {
 
+    const { array } = get;
+    const { setArray } = set;
 
     const showCard = (elementArray, index) => {
         const { title, budget, category } = elementArray;
@@ -9,8 +11,9 @@ const Projects = ({ array, setArray }) => {
         const deleteCard = (elementArray) => {
             // I need to study this
             setArray(current => current.filter(obj => {
-                console.log(obj.title);
-                return obj.title !== elementArray;
+                const { title } = obj;
+                console.log(title);
+                return title !== elementArray;
             }))
 
         }
@@ -18,10 +21,12 @@ const Projects = ({ array, setArray }) => {
         return (
             <div className="cardProject" key={index}>
                 <div className='cardContent'>
-                    <h1 className="titleCard">{title}</h1>
+                    <h1 className="titleCard">{category}</h1>
+                    <p>Titulo: {title}</p>
                     <p>Orçamento: {budget} R$</p>
-                    <p>Tipo: {category}</p>
                     <button onClick={() => deleteCard(title)}>Deletar</button>
+
+
                 </div>
 
             </div>)

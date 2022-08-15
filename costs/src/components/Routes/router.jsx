@@ -17,6 +17,7 @@ const Router = () => {
         setNameProject,
         setBudget,
         setCategory,
+        setArray
     }
 
 
@@ -24,6 +25,7 @@ const Router = () => {
         nameProject,
         budget,
         category,
+        array
     }
 
     return (
@@ -31,8 +33,8 @@ const Router = () => {
             <NavBar />
             <Routes>
                 <Route exath path='/' element={<Home />} />
-                <Route path='/newproject' element={<NewProject setArray = {setArray} set = {set} get={get} categorys = {categorys} />} />
-                <Route path='/projects' element={<Projects setArray = {setArray}array = {array} get = {get} />} />
+                <Route path='/newproject' element={<NewProject set = {set} get = {get} categorys = {categorys} />} />
+                <Route path='/projects' element={<Projects  set = {set} get = {get} />} />
             </Routes>
         </BrowserRouter>
     )

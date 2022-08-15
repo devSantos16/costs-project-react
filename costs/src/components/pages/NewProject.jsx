@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 
-const NewProject = ({ set, get, setArray, categorys }) => {
+const NewProject = ({ set, get, categorys }) => {
+
+    const { setNameProject, setBudget, setCategory, setArray } = set;
+    const { nameProject, budget, category } = get;
 
 
     const eventHandle = (set, event) => {
@@ -16,21 +19,21 @@ const NewProject = ({ set, get, setArray, categorys }) => {
     }
 
     const submitProject = () => {
-        console.log(get.category)
+        console.log(category)
 
         // I need to study this
         setArray(prevArray => [...prevArray,
         {
-            title: get.nameProject,
-            budget: get.budget,
-            category: get.category,
+            title: nameProject,
+            budget: budget,
+            category: category,
             services: []
         }
         ]);
 
-        set.setNameProject("");
-        set.setBudget(0);
-        set.setCategory("");
+        setNameProject("");
+        setBudget(0);
+        setCategory(categorys[0]);
 
     }
 
@@ -38,19 +41,19 @@ const NewProject = ({ set, get, setArray, categorys }) => {
         <section className="sectionContainer">
             <h1>Criar Projeto</h1>
             <p>Crie seus projetos para depois adicionar os serviços</p>
-            <form>
+            <form className='formContainer'>
                 <p>Nome do Projeto</p>
-                <input type='text' onChange={(e) => eventHandle(set.setNameProject, e)}></input>
+                <input type='text' onChange={(e) => eventHandle(setNameProject, e)}></input>
                 <p>Orçamento</p>
-                <input type='text' onChange={(e) => eventHandle(set.setBudget, e)} ></input>
+                <input type='text' onChange={(e) => eventHandle(setBudget, e)} ></input>
                 {/* nao sei ainda */}
                 <p>Categoria</p>
-                <select onChange={(e) => eventHandle(set.setCategory, e)}>
+                <select onChange={(e) => eventHandle(setCategory, e)}>
                     {categorys.map((category, index) => showCategorys(category, index))}
                 </select>
             </form>
             <div className="buttonContainer">
-                <button><Link onClick={() => submitProject()} to="/projects">Criar projeto</Link></button>
+                <Link className="button" onClick={() => submitProject()} to="/projects">Criar projeto</Link>
             </div>
         </section>
 

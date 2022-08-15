@@ -31,6 +31,8 @@ p{
     padding-right: 100px;
 }
 
+
+
 .sectionContainer {
     display: flex;
     flex-direction: column;
@@ -39,14 +41,60 @@ p{
     height: 90vh;
 }
 
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+.formContainer input{
+    padding: 5px;
+    background-color: #121214;
+    border-radius: 5px;
+    border: 1px solid #633bbc;
+    color: #fff;
+
+}
+
+.formContainer select{
+    padding: 5px;
+    background-color: #121214;
+    border-radius: 5px;
+    border: 1px solid #633bbc;
+    color: #fff;
+
+}
+
+
 .elementContainer {
     text-align: center;
 }
 
+.buttonHomeContainer {
+    margin-top: 40px;
+}
+
+
 .buttonContainer {
-    margin-top: 30px;
+    margin-top: 50px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    
 
 }
+
+.button{
+    background-color: #633bbc;
+    color: white;
+    padding: 15px;
+    border-radius: 100px;
+    text-decoration: none !important;
+    text-align: center;
+    width: 200px;
+}
+
+
 
 .cardContainer {
     display: flex;
@@ -64,10 +112,16 @@ p{
     align-items: center;
     justify-content: flex-start;
     border: 1px solid #633bbc;
+    background-color: #121214;
     border-radius: 5px;
     width: 25%;
-    height: 50%;
+    height: 30%;
 }
+
+.cardProject button{
+    padding: 5px;
+}
+
 
 
 .cardContent {
